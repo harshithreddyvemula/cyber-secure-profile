@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, User } from "lucide-react";
+import { Mail, User } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -55,18 +55,6 @@ const Contact = () => {
                     <p className="text-gray-400">Email</p>
                     <a href="mailto:harshithvamshi1@gmail.com" className="text-white hover:text-cyan-400 transition-colors">
                       harshithvamshi1@gmail.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="bg-cyan-500/10 p-3 rounded-full">
-                    <Phone className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400">Phone</p>
-                    <a href="tel:682-374-4788" className="text-white hover:text-cyan-400 transition-colors">
-                      682-374-4788
                     </a>
                   </div>
                 </div>

@@ -89,18 +89,18 @@ const Projects = () => {
             {projects.map((project, index) => (
               <ScrollAnimation key={index} delay={index * 200}>
                 <Card className={`glass-effect hover-lift group h-full relative overflow-hidden bg-gradient-to-br ${getCategoryColor(project.category)}`}>
-                  {/* Category badge */}
-                  <div className="absolute top-4 right-4 z-10">
+                  {/* Category badge positioned to avoid overlap */}
+                  <div className="absolute top-4 left-4 z-10">
                     <Badge className="bg-black/20 text-white border border-white/20 backdrop-blur-sm">
                       {project.category}
                     </Badge>
                   </div>
                   
-                  <CardHeader className="relative z-10">
+                  <CardHeader className="relative z-10 pt-16">
                     <CardTitle className="text-white">
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors pr-20">
+                      <div className="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">
                         {project.title}
-                      </h3>
+                      </div>
                       <div className="flex flex-col gap-2 text-sm">
                         <div className="flex items-center gap-2 text-cyan-400">
                           <User className="w-4 h-4" />

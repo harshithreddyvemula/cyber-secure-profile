@@ -1,5 +1,5 @@
 
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -19,13 +19,6 @@ const FloatingContactButton = () => {
           size="sm"
         >
           <Mail className="w-4 h-4" />
-        </Button>
-        <Button
-          onClick={() => window.open('tel:682-374-4788')}
-          className="bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-full shadow-lg"
-          size="sm"
-        >
-          <Phone className="w-4 h-4" />
         </Button>
       </div>
       

@@ -98,14 +98,6 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <ScrollAnimation key={index} delay={index * 150}>
                 <Card className={`glass-effect hover-lift group relative overflow-hidden ${exp.highlight ? 'border-gradient cyber-glow' : ''}`}>
-                  {exp.highlight && (
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0">
-                        Current Role
-                      </Badge>
-                    </div>
-                  )}
-                  
                   <CardHeader className="pb-4">
                     <CardTitle className="text-white">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
@@ -133,9 +125,16 @@ const Experience = () => {
                             <MapPin className="w-4 h-4" />
                             <span>{exp.location}</span>
                           </div>
-                          <Badge variant="outline" className="w-fit border-cyan-500/30 text-cyan-400">
-                            {exp.type}
-                          </Badge>
+                          <div className="flex items-center gap-2">
+                            <Badge variant="outline" className="w-fit border-cyan-500/30 text-cyan-400">
+                              {exp.type}
+                            </Badge>
+                            {exp.highlight && (
+                              <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0">
+                                Current Role
+                              </Badge>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </CardTitle>
