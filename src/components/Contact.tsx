@@ -4,54 +4,44 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, User, FileText, Briefcase } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, User, FileText, Briefcase, Loader2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useContactForm } from "@/hooks/useContactForm";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Contact = () => {
-  const { toast } = useToast();
+  const { submitContact, isSubmitting } = useContactForm();
+  const { trackSectionView, trackButtonClick } = useAnalytics();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     role: "",
-    inquiryType: "",
+    inquiry_type: "",
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    trackSectionView('contact');
+  }, [trackSectionView]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Generate email with appropriate subject and body based on inquiry type
-    const subject = formData.inquiryType === 'resume' 
-      ? 'Resume Request - Harshith Reddy Vemula'
-      : `${formData.inquiryType.charAt(0).toUpperCase() + formData.inquiryType.slice(1)} Inquiry - ${formData.name}`;
+    trackButtonClick('contact_form_submit', 'contact');
     
-    const body = `
-Hello Harshith,
-
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company}
-Role: ${formData.role}
-Inquiry Type: ${formData.inquiryType}
-
-Message:
-${formData.message}
-
-Best regards,
-${formData.name}
-    `;
-
-    const mailtoLink = `mailto:harshithvamshi1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink);
-
-    toast({
-      title: "Message Prepared!",
-      description: "Your email client has been opened with the pre-filled message. Please send it to complete your inquiry.",
+    const result = await submitContact({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      role: formData.role,
+      inquiry_type: formData.inquiry_type,
+      message: formData.message
     });
-    
-    setFormData({ name: "", email: "", company: "", role: "", inquiryType: "", message: "" });
+
+    if (result.success) {
+      setFormData({ name: "", email: "", company: "", role: "", inquiry_type: "", message: "" });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -64,8 +54,13 @@ ${formData.name}
   const handleSelectChange = (value: string) => {
     setFormData(prev => ({
       ...prev,
-      inquiryType: value
+      inquiry_type: value
     }));
+  };
+
+  const handleQuickAction = (actionType: string, subject: string, body: string) => {
+    trackButtonClick(`quick_action_${actionType}`, 'contact');
+    window.open(`mailto:harshithvamshi1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
   };
 
   return (
@@ -118,14 +113,14 @@ ${formData.name}
                   <h4 className="text-lg font-semibold text-cyan-400">Quick Actions</h4>
                   <div className="space-y-3">
                     <Button 
-                      onClick={() => window.open('mailto:harshithvamshi1@gmail.com?subject=Resume Request&body=Hi Harshith, I would like to request your detailed resume for review.')}
+                      onClick={() => handleQuickAction('resume', 'Resume Request', 'Hi Harshith, I would like to request your detailed resume for review.')}
                       className="w-full bg-green-600 hover:bg-green-700 text-white"
                     >
                       <FileText className="w-4 h-4 mr-2" />
                       Request Resume (PDF)
                     </Button>
                     <Button 
-                      onClick={() => window.open('mailto:harshithvamshi1@gmail.com?subject=Interview Request&body=Hi Harshith, I would like to schedule an interview to discuss potential opportunities.')}
+                      onClick={() => handleQuickAction('interview', 'Interview Request', 'Hi Harshith, I would like to schedule an interview to discuss potential opportunities.')}
                       variant="outline"
                       className="w-full border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
                     >
@@ -157,6 +152,7 @@ ${formData.name}
                           className="bg-slate-800 border-slate-600 text-white"
                           placeholder="Your full name"
                           required
+                          disabled={isSubmitting}
                         />
                       </div>
                       <div>
@@ -170,6 +166,7 @@ ${formData.name}
                           className="bg-slate-800 border-slate-600 text-white"
                           placeholder="your.email@company.com"
                           required
+                          disabled={isSubmitting}
                         />
                       </div>
                     </div>
@@ -184,6 +181,7 @@ ${formData.name}
                           onChange={handleChange}
                           className="bg-slate-800 border-slate-600 text-white"
                           placeholder="Your company name"
+                          disabled={isSubmitting}
                         />
                       </div>
                       <div>
@@ -195,22 +193,23 @@ ${formData.name}
                           onChange={handleChange}
                           className="bg-slate-800 border-slate-600 text-white"
                           placeholder="e.g., HR Manager, CTO"
+                          disabled={isSubmitting}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <Label htmlFor="inquiryType" className="text-gray-300">Inquiry Type *</Label>
-                      <Select onValueChange={handleSelectChange} required>
+                      <Label htmlFor="inquiry_type" className="text-gray-300">Inquiry Type *</Label>
+                      <Select onValueChange={handleSelectChange} required disabled={isSubmitting}>
                         <SelectTrigger className="bg-slate-800 border-slate-600 text-white">
                           <SelectValue placeholder="Select inquiry type" />
                         </SelectTrigger>
                         <SelectContent className="bg-slate-800 border-slate-600 text-white z-50">
-                          <SelectItem value="resume" className="text-white hover:bg-slate-700 focus:bg-slate-700">Resume Request</SelectItem>
-                          <SelectItem value="interview" className="text-white hover:bg-slate-700 focus:bg-slate-700">Interview Opportunity</SelectItem>
-                          <SelectItem value="project" className="text-white hover:bg-slate-700 focus:bg-slate-700">Project Collaboration</SelectItem>
-                          <SelectItem value="consultation" className="text-white hover:bg-slate-700 focus:bg-slate-700">Security Consultation</SelectItem>
-                          <SelectItem value="general" className="text-white hover:bg-slate-700 focus:bg-slate-700">General Inquiry</SelectItem>
+                          <SelectItem value="resume">Resume Request</SelectItem>
+                          <SelectItem value="interview">Interview Opportunity</SelectItem>
+                          <SelectItem value="project">Project Collaboration</SelectItem>
+                          <SelectItem value="consultation">Security Consultation</SelectItem>
+                          <SelectItem value="general">General Inquiry</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -225,15 +224,23 @@ ${formData.name}
                         className="w-full p-3 bg-slate-800 border border-slate-600 rounded-md text-white min-h-[120px] resize-none"
                         placeholder="Tell me about your requirements, timeline, or any specific questions you have..."
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
 
                     <Button 
                       type="submit" 
-                      className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 text-lg"
-                      disabled={!formData.name || !formData.email || !formData.inquiryType || !formData.message}
+                      className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={!formData.name || !formData.email || !formData.inquiry_type || !formData.message || isSubmitting}
                     >
-                      Send Message
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Sending Message...
+                        </>
+                      ) : (
+                        'Send Message'
+                      )}
                     </Button>
                   </form>
                 </CardContent>

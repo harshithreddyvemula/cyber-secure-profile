@@ -1,4 +1,5 @@
 
+import { useEffect } from "react";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -16,8 +17,15 @@ import InteractiveTimeline from "@/components/InteractiveTimeline";
 import WhyHireMe from "@/components/WhyHireMe";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 import EnhancedAnimations from "@/components/EnhancedAnimations";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Index = () => {
+  const { trackPageView } = useAnalytics();
+
+  useEffect(() => {
+    trackPageView('home');
+  }, [trackPageView]);
+
   return (
     <>
       <SEO />
