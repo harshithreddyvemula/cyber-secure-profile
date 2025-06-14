@@ -11,6 +11,8 @@ import Navigation from "@/components/Navigation";
 import FloatingContactButton from "@/components/FloatingContactButton";
 import SEO from "@/components/SEO";
 import Analytics from "@/components/Analytics";
+import CaseStudies from "@/components/CaseStudies";
+import InteractiveTimeline from "@/components/InteractiveTimeline";
 
 const Index = () => {
   return (
@@ -29,7 +31,9 @@ const Index = () => {
           <Hero />
           <About />
           <Experience />
+          <InteractiveTimeline />
           <Projects />
+          <CaseStudies />
           <Education />
           <Skills />
           <Certifications />
