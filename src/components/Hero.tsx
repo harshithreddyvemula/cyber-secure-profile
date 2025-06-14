@@ -34,17 +34,15 @@ const Hero = () => {
       
       <div className="container mx-auto px-6 text-center relative z-20">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-16">
-          <div className="flex-shrink-0 animate-float">
+          <div className="flex-shrink-0">
             <div className="relative group">
-              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-cyan-500/50 shadow-2xl shadow-cyan-500/20 cyber-glow">
+              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-cyan-500/50 shadow-2xl shadow-cyan-500/20">
                 <img 
                   src="/lovable-uploads/d5898636-b603-4616-9431-e5012594036b.png" 
                   alt="Harshith Reddy Vemula"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -inset-4 border border-cyan-500/30 rounded-full animate-pulse-glow"></div>
-              <div className="absolute -inset-8 border border-cyan-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
           

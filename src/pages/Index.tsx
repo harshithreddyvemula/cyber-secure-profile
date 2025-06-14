@@ -1,3 +1,4 @@
+
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -13,13 +14,8 @@ import Analytics from "@/components/Analytics";
 import CaseStudies from "@/components/CaseStudies";
 import InteractiveTimeline from "@/components/InteractiveTimeline";
 import WhyHireMe from "@/components/WhyHireMe";
-import AIPortfolioAssistant from "@/components/AIPortfolioAssistant";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
-import VerificationSystem from "@/components/VerificationSystem";
 import EnhancedAnimations from "@/components/EnhancedAnimations";
-import GitHubStats from "@/components/GitHubStats";
-import ServiceOfferings from "@/components/ServiceOfferings";
-import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
 const Index = () => {
   return (
@@ -41,20 +37,15 @@ const Index = () => {
           <Hero />
           <About />
           <WhyHireMe />
-          <ServiceOfferings />
           <Experience />
           <InteractiveTimeline />
           <Projects />
           <CaseStudies />
-          <GitHubStats />
           <Education />
           <Skills />
           <Certifications />
-          <TestimonialsCarousel />
-          <VerificationSystem />
           <Contact />
           <FloatingContactButton />
-          <AIPortfolioAssistant />
           <PerformanceMonitor />
         </div>
       </div>
