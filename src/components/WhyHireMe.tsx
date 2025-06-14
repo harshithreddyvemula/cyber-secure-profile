@@ -50,9 +50,8 @@ const WhyHireMe = () => {
             <h2 className="text-4xl font-bold text-white mb-4">
               Why <span className="text-cyan-400">Hire Me?</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-6">
-              I bring immediate value through a unique combination of cybersecurity expertise, 
-              data engineering skills, and a proven track record of securing enterprise systems.
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-6 leading-relaxed">
+              As a full-spectrum technologist, I bring together the agility of a software developer, the precision of a cybersecurity engineer, and the analytical power of a data engineer with DevOps fluency. I build secure, scalable, and intelligent systems—protecting digital infrastructure while accelerating innovation. Whether deploying resilient cloud environments, automating secure pipelines, or delivering actionable insights from complex data, I operate where performance meets protection. If you're looking for someone who can code, secure, and scale with equal fluency—I'm that bridge.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-green-500 mx-auto"></div>
           </div>

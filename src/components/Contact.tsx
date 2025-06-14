@@ -205,12 +205,12 @@ ${formData.name}
                         <SelectTrigger className="bg-slate-800 border-slate-600 text-white">
                           <SelectValue placeholder="Select inquiry type" />
                         </SelectTrigger>
-                        <SelectContent className="bg-slate-800 border-slate-600">
-                          <SelectItem value="resume">Resume Request</SelectItem>
-                          <SelectItem value="interview">Interview Opportunity</SelectItem>
-                          <SelectItem value="project">Project Collaboration</SelectItem>
-                          <SelectItem value="consultation">Security Consultation</SelectItem>
-                          <SelectItem value="general">General Inquiry</SelectItem>
+                        <SelectContent className="bg-slate-800 border-slate-600 text-white z-50">
+                          <SelectItem value="resume" className="text-white hover:bg-slate-700 focus:bg-slate-700">Resume Request</SelectItem>
+                          <SelectItem value="interview" className="text-white hover:bg-slate-700 focus:bg-slate-700">Interview Opportunity</SelectItem>
+                          <SelectItem value="project" className="text-white hover:bg-slate-700 focus:bg-slate-700">Project Collaboration</SelectItem>
+                          <SelectItem value="consultation" className="text-white hover:bg-slate-700 focus:bg-slate-700">Security Consultation</SelectItem>
+                          <SelectItem value="general" className="text-white hover:bg-slate-700 focus:bg-slate-700">General Inquiry</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
