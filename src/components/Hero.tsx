@@ -22,8 +22,8 @@ const Hero = () => {
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Enhanced dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
@@ -43,27 +43,27 @@ const Hero = () => {
           
           <div className="text-left">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="text-white">Harshith</span>
+              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-extrabold">Harshith</span>
               <br />
-              <span className="text-cyan-400">Reddy Vemula</span>
+              <span className="text-cyan-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-extrabold">Reddy Vemula</span>
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-300 mb-6">
+            <h2 className="text-2xl md:text-3xl text-gray-100 mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-semibold">
               Cybersecurity Engineer & Software Developer
             </h2>
-            <p className="text-lg text-gray-400 mb-8 max-w-2xl leading-relaxed">
+            <p className="text-lg text-gray-200 mb-8 max-w-2xl leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] font-medium">
               Specializing in IT Security, Compliance, and Risk Management with expertise in 
               cloud security, penetration testing, and secure software development.
             </p>
             <div className="flex gap-4">
               <Button 
-                className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3"
+                className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 font-semibold shadow-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
                 onClick={scrollToAbout}
               >
                 Explore My Work
               </Button>
               <Button 
                 variant="outline" 
-                className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 px-8 py-3"
+                className="border-2 border-cyan-400 text-cyan-300 hover:bg-cyan-500/20 hover:text-white px-8 py-3 font-semibold backdrop-blur-sm bg-black/20 shadow-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               >
                 Get In Touch
@@ -73,7 +73,7 @@ const Hero = () => {
         </div>
         
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="w-6 h-6 text-cyan-400" />
+          <ArrowDown className="w-6 h-6 text-cyan-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
         </div>
       </div>
     </section>
