@@ -21,7 +21,7 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const navItems = ["About", "Experience", "Projects", "Education", "Skills", "Contact"];
+  const navItems = ["About", "Experience", "Projects", "Education", "Skills", "Certifications", "Contact"];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${

@@ -5,6 +5,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
+import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import FloatingContactButton from "@/components/FloatingContactButton";
@@ -26,6 +27,7 @@ const Index = () => {
         <Projects />
         <Education />
         <Skills />
+        <Certifications />
         <Contact />
         <FloatingContactButton />
       </div>
