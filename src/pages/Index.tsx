@@ -46,6 +46,7 @@ const Index = () => {
           <Certifications />
           <Contact />
           <FloatingContactButton />
+          {/* Performance Monitor now at the very bottom */}
           <PerformanceMonitor />
         </div>
       </div>
