@@ -69,12 +69,12 @@ const PerformanceMonitor = () => {
 
   if (!isVisible) {
     return (
-      <div className="fixed top-1/2 left-6 transform -translate-y-1/2 z-30">
+      <div className="fixed bottom-6 right-6 z-30">
         <Button
           onClick={() => setIsVisible(true)}
           variant="outline"
           size="sm"
-          className="bg-slate-900/90 border-slate-700 text-cyan-400 hover:bg-slate-800 rotate-90 origin-center"
+          className="bg-slate-900/90 border-slate-700 text-cyan-400 hover:bg-slate-800 shadow-lg"
         >
           <Activity className="w-4 h-4 mr-2" />
           Performance
@@ -84,7 +84,7 @@ const PerformanceMonitor = () => {
   }
 
   return (
-    <div className="fixed top-20 left-6 z-30 w-80">
+    <div className="fixed bottom-20 right-6 z-30 w-80">
       <Card className="bg-slate-900/95 border-slate-700 backdrop-blur-sm shadow-xl">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
