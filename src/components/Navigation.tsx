@@ -19,6 +19,11 @@ const Navigation = () => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
+    
+    // Track navigation click
+    if ((window as any).trackButtonClick) {
+      (window as any).trackButtonClick(`nav_${sectionId}`, 'navigation');
+    }
   };
 
   const navItems = ["About", "Experience", "Projects", "Education", "Skills", "Certifications", "Contact"];
@@ -52,7 +57,12 @@ const Navigation = () => {
           <Button
             variant="ghost"
             className="md:hidden text-gray-300 hover:text-cyan-400"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              if ((window as any).trackButtonClick) {
+                (window as any).trackButtonClick('mobile_menu_toggle', 'navigation');
+              }
+            }}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </Button>
