@@ -16,13 +16,29 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
+    // Convert section names to proper IDs
+    let targetId = sectionId.toLowerCase().replace(/\s+/g, '-');
+    
+    // Handle special case for "Why Hire Me" section
+    if (sectionId === "Why Hire Me") {
+      targetId = "why-hire-me";
+    }
+    
+    console.log('Scrolling to section:', targetId); // Debug log
+    
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      console.log('Found element and scrolling to:', targetId); // Debug log
+    } else {
+      console.log('Element not found:', targetId); // Debug log
+    }
+    
     setIsMobileMenuOpen(false);
     
     // Track navigation click
     if ((window as any).trackButtonClick) {
-      (window as any).trackButtonClick(`nav_${sectionId}`, 'navigation');
+      (window as any).trackButtonClick(`nav_${targetId}`, 'navigation');
     }
   };
 
@@ -54,7 +70,7 @@ const Navigation = () => {
                 key={item}
                 variant="ghost"
                 className="text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 relative group text-sm"
-                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                onClick={() => scrollToSection(item)}
               >
                 {item}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
@@ -87,7 +103,7 @@ const Navigation = () => {
                 key={item}
                 variant="ghost"
                 className="w-full text-left justify-start text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10"
-                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                onClick={() => scrollToSection(item)}
               >
                 {item}
               </Button>
