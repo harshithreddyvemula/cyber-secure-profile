@@ -75,26 +75,30 @@ const FloatingElements = () => {
   }));
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
-      {elements.map((element) => (
-        <div
-          key={element.id}
-          className="absolute w-2 h-2 bg-cyan-400 rounded-full"
-          style={{
-            left: `${element.x}%`,
-            top: `${element.y}%`,
-            animation: `float ${element.duration}s ease-in-out infinite`,
-            animationDelay: `${element.delay}s`
-          }}
-        />
-      ))}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
-          50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
-        }
-      `}</style>
-    </div>
+    <>
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+          }
+        `}
+      </style>
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
+        {elements.map((element) => (
+          <div
+            key={element.id}
+            className="absolute w-2 h-2 bg-cyan-400 rounded-full"
+            style={{
+              left: `${element.x}%`,
+              top: `${element.y}%`,
+              animation: `float ${element.duration}s ease-in-out infinite`,
+              animationDelay: `${element.delay}s`
+            }}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
