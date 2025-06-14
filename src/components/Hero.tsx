@@ -9,13 +9,17 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Enhanced image background with overlay */}
+      {/* Enhanced video background with overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/lovable-uploads/619bf61d-062d-4ad6-b11a-9c0043127c8b.png"
-          alt="Cybersecurity cityscape background"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
-        />
+        >
+          <source src="https://cdn.pixabay.com/video/2019/12/03/29396-376879058_large.mp4" type="video/mp4" />
+        </video>
         {/* Multi-layered overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/70"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 via-transparent to-blue-900/20"></div>
