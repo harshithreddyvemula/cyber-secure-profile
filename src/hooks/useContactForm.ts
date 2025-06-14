@@ -1,32 +1,25 @@
 
 import { useState } from 'react'
-import { supabase } from '@/lib/supabase'
 import { useToast } from '@/hooks/use-toast'
-import type { ContactSubmission } from '@/lib/supabase'
+
+export interface ContactSubmission {
+  name: string
+  email: string
+  company?: string
+  role?: string
+  inquiry_type: string
+  message: string
+}
 
 export const useContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
-  const submitContact = async (formData: Omit<ContactSubmission, 'id' | 'created_at' | 'status'>) => {
+  const submitContact = async (formData: ContactSubmission) => {
     setIsSubmitting(true)
     
     try {
-      // Insert into database
-      const { data, error } = await supabase
-        .from('contact_submissions')
-        .insert([{
-          ...formData,
-          status: 'new'
-        }])
-        .select()
-        .single()
-
-      if (error) {
-        throw error
-      }
-
-      // Still send email as backup
+      // For now, just handle the email functionality
       const subject = formData.inquiry_type === 'resume' 
         ? 'Resume Request - Harshith Reddy Vemula'
         : `${formData.inquiry_type.charAt(0).toUpperCase() + formData.inquiry_type.slice(1)} Inquiry - ${formData.name}`
@@ -45,8 +38,6 @@ Inquiry Type: ${formData.inquiry_type}
 Message:
 ${formData.message}
 
-This submission has been automatically saved to the database with ID: ${data.id}
-
 Best regards,
 Portfolio Contact System
       `
@@ -56,16 +47,16 @@ Portfolio Contact System
 
       toast({
         title: "Message Sent Successfully!",
-        description: "Your message has been saved and an email notification has been sent.",
+        description: "An email has been opened with your message. Please send it to complete your inquiry.",
       })
 
-      return { success: true, data }
+      return { success: true }
     } catch (error) {
       console.error('Contact form submission error:', error)
       
       toast({
-        title: "Submission Failed",
-        description: "There was an error saving your message. Please try again or email directly.",
+        title: "Error",
+        description: "There was an error processing your message. Please try again.",
         variant: "destructive"
       })
 

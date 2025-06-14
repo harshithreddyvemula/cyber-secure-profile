@@ -1,22 +1,16 @@
 
 import { useCallback } from 'react'
-import { supabase } from '@/lib/supabase'
 
 export const useAnalytics = () => {
   const trackEvent = useCallback(async (eventType: string, eventData: Record<string, any> = {}) => {
     try {
-      const { error } = await supabase
-        .from('analytics_events')
-        .insert([{
-          event_type: eventType,
-          event_data: eventData,
-          user_agent: navigator.userAgent,
-          created_at: new Date().toISOString()
-        }])
-
-      if (error) {
-        console.error('Analytics tracking error:', error)
-      }
+      // For now, just log analytics events to console
+      console.log('Analytics Event:', {
+        event_type: eventType,
+        event_data: eventData,
+        timestamp: new Date().toISOString(),
+        user_agent: navigator.userAgent
+      })
     } catch (error) {
       console.error('Analytics tracking failed:', error)
     }

@@ -11,6 +11,9 @@ console.log('Environment check:', {
   key: supabaseAnonKey ? 'Present' : 'Missing'
 })
 
+// Create either real client or mock client
+let supabaseClient: any
+
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error('Supabase environment variables missing:', {
     VITE_SUPABASE_URL: supabaseUrl || 'NOT SET',
@@ -18,7 +21,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   })
   
   // Create a mock client to prevent app crashes during development
-  const mockClient = {
+  supabaseClient = {
     from: () => ({
       insert: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
       select: () => Promise.resolve({ data: [], error: new Error('Supabase not configured') }),
@@ -28,11 +31,12 @@ if (!supabaseUrl || !supabaseAnonKey) {
   }
   
   console.warn('Using mock Supabase client - please configure your environment variables')
-  export const supabase = mockClient as any
 } else {
-  export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+  supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
   console.log('Supabase client initialized successfully')
 }
+
+export const supabase = supabaseClient
 
 // Database types
 export interface ContactSubmission {
