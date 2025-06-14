@@ -1,10 +1,9 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, User, FileText, Briefcase, Loader2 } from "lucide-react";
+import { Mail, User, FileText, Briefcase, Loader2, Send } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useContactForm } from "@/hooks/useContactForm";
 import { useAnalytics } from "@/hooks/useAnalytics";
@@ -228,20 +227,25 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={!formData.name || !formData.email || !formData.inquiry_type || !formData.message || isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          Sending Message...
-                        </>
-                      ) : (
-                        'Send Message'
-                      )}
-                    </Button>
+                    <div className="pt-4">
+                      <Button 
+                        type="submit" 
+                        className="w-full h-14 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-cyan-400/30"
+                        disabled={!formData.name || !formData.email || !formData.inquiry_type || !formData.message || isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-3 animate-spin" />
+                            Sending Message...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5 mr-3" />
+                            Send Message
+                          </>
+                        )}
+                      </Button>
+                    </div>
                   </form>
                 </CardContent>
               </Card>
