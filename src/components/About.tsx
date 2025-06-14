@@ -105,21 +105,13 @@ const About = () => {
                     </h3>
                     <div className="space-y-6 text-gray-300 leading-relaxed">
                       <p className="text-lg">
-                        I am a dedicated cybersecurity professional with extensive experience in IT security, 
-                        compliance, and risk management. Currently serving as an <span className="text-cyan-400 font-semibold">IT Security & Compliance 
-                        Administrator for the State of New Mexico</span>, I specialize in protecting digital assets 
-                        and ensuring regulatory compliance across complex environments.
+                        I'm a <span className="text-cyan-400 font-semibold">multidisciplinary engineer blending software development, cybersecurity, data engineering, and DevOps</span> to build secure, scalable systems. With hands-on experience in penetration testing, cloud automation, and secure DevOps pipelines, I bridge the gap between development and defense. From real-time threat detection to infrastructure as code, I engineer solutions that perform and protect.
                       </p>
                       <p className="text-lg">
-                        My expertise spans across <span className="text-green-400 font-semibold">penetration testing, vulnerability assessments, cloud security, 
-                        and secure software development</span>. I have successfully identified and mitigated over 100 
-                        security flaws, reducing potential attack surfaces by 25% while maintaining compliance 
-                        with standards like <span className="text-blue-400 font-semibold">NIST 800-53, ISO 27001, and OWASP Top 10</span>.
+                        From <span className="text-green-400 font-semibold">penetration testing and threat hunting to CI/CD integration, ETL pipelines, and cloud automation</span>, I bring a full-stack security mindset to every phase of the development lifecycle. My career has spanned designing mobile apps, building compliance dashboards, securing cloud infrastructure (Azure, AWS, GCP), and operationalizing frameworks like <span className="text-blue-400 font-semibold">NIST 800-53, MITRE ATT&CK, and ISO 27001</span>.
                       </p>
                       <p className="text-lg">
-                        With a <span className="text-purple-400 font-semibold">Master's degree in Computer and Information Science from the University of Texas 
-                        at Arlington</span> and hands-on experience at leading organizations like Tata Consultancy Services, 
-                        I bring a unique blend of theoretical knowledge and practical expertise to every project.
+                        I don't just solve problems—I <span className="text-purple-400 font-semibold">proactively engineer resilience into systems</span>, ensuring security, scalability, and compliance. Whether it's automating infrastructure with Terraform, conducting vulnerability assessments with Nessus and Burp Suite, or analyzing threats using Sentinel and Defender, I deliver technical precision with strategic impact.
                       </p>
                     </div>
                   </div>
