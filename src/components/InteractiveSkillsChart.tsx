@@ -13,10 +13,10 @@ const InteractiveSkillsChart = () => {
   const skillsData = [
     { skill: 'Cybersecurity', proficiency: 95, years: 4, projects: 12 },
     { skill: 'Cloud Security', proficiency: 90, years: 3, projects: 8 },
-    { skill: 'Penetration Testing', proficiency: 88, years: 3, projects: 15 },
-    { skill: 'Python Programming', proficiency: 85, years: 5, projects: 20 },
-    { skill: 'Risk Management', proficiency: 92, years: 4, projects: 10 },
-    { skill: 'Compliance & GRC', proficiency: 90, years: 3, projects: 7 }
+    { skill: 'Pen Testing', proficiency: 88, years: 3, projects: 15 },
+    { skill: 'Python', proficiency: 85, years: 5, projects: 20 },
+    { skill: 'Risk Mgmt', proficiency: 92, years: 4, projects: 10 },
+    { skill: 'Compliance', proficiency: 90, years: 3, projects: 7 }
   ];
 
   const toolsData = [
@@ -91,14 +91,15 @@ const InteractiveSkillsChart = () => {
             <CardContent>
               <div className="h-96">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={skillsData}>
+                  <BarChart data={skillsData} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
                     <XAxis 
                       dataKey="skill" 
-                      tick={{ fill: '#e2e8f0', fontSize: 11 }}
+                      tick={{ fill: '#e2e8f0', fontSize: 10 }}
                       angle={-45}
                       textAnchor="end"
-                      height={60}
+                      height={80}
+                      interval={0}
                     />
                     <YAxis tick={{ fill: '#94a3b8' }} />
                     <Tooltip 
