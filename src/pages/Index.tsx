@@ -13,6 +13,11 @@ import SEO from "@/components/SEO";
 import Analytics from "@/components/Analytics";
 import CaseStudies from "@/components/CaseStudies";
 import InteractiveTimeline from "@/components/InteractiveTimeline";
+import WhyHireMe from "@/components/WhyHireMe";
+import AIPortfolioAssistant from "@/components/AIPortfolioAssistant";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
+import VerificationSystem from "@/components/VerificationSystem";
+import EnhancedAnimations from "@/components/EnhancedAnimations";
 
 const Index = () => {
   return (
@@ -20,6 +25,9 @@ const Index = () => {
       <SEO />
       <Analytics />
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-x-hidden">
+        {/* Enhanced background effects */}
+        <EnhancedAnimations />
+        
         {/* Global background pattern */}
         <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1)_0%,transparent_50%)]"></div>
@@ -30,6 +38,7 @@ const Index = () => {
           <Navigation />
           <Hero />
           <About />
+          <WhyHireMe />
           <Experience />
           <InteractiveTimeline />
           <Projects />
@@ -37,8 +46,11 @@ const Index = () => {
           <Education />
           <Skills />
           <Certifications />
+          <VerificationSystem />
           <Contact />
           <FloatingContactButton />
+          <AIPortfolioAssistant />
+          <PerformanceMonitor />
         </div>
       </div>
     </>

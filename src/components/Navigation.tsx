@@ -26,7 +26,17 @@ const Navigation = () => {
     }
   };
 
-  const navItems = ["About", "Experience", "Projects", "Education", "Skills", "Certifications", "Contact"];
+  const navItems = [
+    "About", 
+    "Why Hire Me", 
+    "Experience", 
+    "Projects", 
+    "Education", 
+    "Skills", 
+    "Certifications", 
+    "Verification",
+    "Contact"
+  ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -39,13 +49,13 @@ const Navigation = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden lg:flex space-x-6">
             {navItems.map((item) => (
               <Button
                 key={item}
                 variant="ghost"
-                className="text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 relative group"
-                onClick={() => scrollToSection(item.toLowerCase())}
+                className="text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 relative group text-sm"
+                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
               >
                 {item}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
@@ -56,7 +66,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
-            className="md:hidden text-gray-300 hover:text-cyan-400"
+            className="lg:hidden text-gray-300 hover:text-cyan-400"
             onClick={() => {
               setIsMobileMenuOpen(!isMobileMenuOpen);
               if ((window as any).trackButtonClick) {
@@ -69,7 +79,7 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="pt-4 pb-2 space-y-2">
@@ -78,7 +88,7 @@ const Navigation = () => {
                 key={item}
                 variant="ghost"
                 className="w-full text-left justify-start text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10"
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
               >
                 {item}
               </Button>
