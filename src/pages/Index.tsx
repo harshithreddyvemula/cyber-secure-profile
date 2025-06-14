@@ -7,6 +7,7 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
+import FloatingContactButton from "@/components/FloatingContactButton";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <Education />
       <Skills />
       <Contact />
+      <FloatingContactButton />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ScrollAnimation from "./ScrollAnimation";
 
 const Experience = () => {
   const experiences = [
@@ -67,51 +68,55 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Professional <span className="text-cyan-400">Experience</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-green-500 mx-auto"></div>
-        </div>
+        <ScrollAnimation>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Professional <span className="text-cyan-400">Experience</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-green-500 mx-auto"></div>
+          </div>
+        </ScrollAnimation>
         
         <div className="max-w-5xl mx-auto">
           <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <Card key={index} className="bg-slate-900/50 border-slate-700 backdrop-blur-sm hover:bg-slate-900/70 transition-all duration-300">
-                <CardHeader>
-                  <CardTitle className="text-white">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                      <h3 className="text-xl font-semibold">{exp.title}</h3>
-                      <span className="text-sm text-cyan-400 font-normal">{exp.period}</span>
+              <ScrollAnimation key={index} delay={index * 200}>
+                <Card className="bg-slate-900/50 border-slate-700 backdrop-blur-sm hover:bg-slate-900/70 transition-all duration-300 transform hover:scale-[1.02]">
+                  <CardHeader>
+                    <CardTitle className="text-white">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                        <h3 className="text-xl font-semibold">{exp.title}</h3>
+                        <span className="text-sm text-cyan-400 font-normal">{exp.period}</span>
+                      </div>
+                      <a 
+                        href={exp.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg text-cyan-400 hover:text-cyan-300 transition-colors"
+                      >
+                        {exp.company}
+                      </a>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 mb-4">
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i} className="text-gray-300 flex items-start">
+                          <span className="text-cyan-400 mr-2">•</span>
+                          {achievement}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill, i) => (
+                        <Badge key={i} variant="secondary" className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30">
+                          {skill}
+                        </Badge>
+                      ))}
                     </div>
-                    <a 
-                      href={exp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-lg text-cyan-400 hover:text-cyan-300 transition-colors"
-                    >
-                      {exp.company}
-                    </a>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-4">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="text-gray-300 flex items-start">
-                        <span className="text-cyan-400 mr-2">•</span>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill, i) => (
-                      <Badge key={i} variant="secondary" className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

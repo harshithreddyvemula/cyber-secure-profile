@@ -1,9 +1,11 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +18,10 @@ const Navigation = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
   };
+
+  const navItems = ["About", "Experience", "Projects", "Education", "Skills", "Contact"];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -27,12 +32,42 @@ const Navigation = () => {
           <div className="text-cyan-400 font-bold text-xl">
             Harshith Reddy Vemula
           </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {["About", "Experience", "Projects", "Education", "Skills", "Contact"].map((item) => (
+            {navItems.map((item) => (
               <Button
                 key={item}
                 variant="ghost"
-                className="text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10"
+                className="text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 relative group"
+                onClick={() => scrollToSection(item.toLowerCase())}
+              >
+                {item}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+              </Button>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            className="md:hidden text-gray-300 hover:text-cyan-400"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </Button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="pt-4 pb-2 space-y-2">
+            {navItems.map((item) => (
+              <Button
+                key={item}
+                variant="ghost"
+                className="w-full text-left justify-start text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10"
                 onClick={() => scrollToSection(item.toLowerCase())}
               >
                 {item}
