@@ -28,12 +28,15 @@ const Navigation = () => {
 
   const navItems = [
     "About", 
-    "Why Hire Me", 
+    "Why Hire Me",
+    "Services",
     "Experience", 
-    "Projects", 
+    "Projects",
+    "GitHub Stats",
     "Education", 
     "Skills", 
-    "Certifications", 
+    "Certifications",
+    "Testimonials",
     "Verification",
     "Contact"
   ];
